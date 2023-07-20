@@ -5,5 +5,5 @@
   ],
   "run": true,
   "vendor-available": true,
-    "features": "alloc,der,pkcs8"
+  "features": "alloc,der,pkcs8"
 }
