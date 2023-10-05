@@ -49,6 +49,40 @@ rust_library_host {
         "libpkcs8",
         "libzeroize",
     ],
+}
+
+rust_library_rlib {
+    name: "libsec1_nostd",
+    crate_name: "sec1",
+    cargo_env_compat: true,
+    cargo_pkg_version: "0.3.0",
+    srcs: ["src/lib.rs"],
+    edition: "2021",
+    features: [
+        "alloc",
+        "der",
+        "pkcs8",
+        "zeroize",
+    ],
+    rustlibs: [
+        "libder_nostd",
+        "libpkcs8_nostd",
+        "libzeroize_nostd",
+    ],
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.virt",
+    ],
+    prefer_rlib: true,
+    no_stdlibs: true,
+    stdlibs: [
+        "libcompiler_builtins.rust_sysroot",
+        "libcore.rust_sysroot",
+    ],
     product_available: true,
     vendor_available: true,
+    visibility: [
+         "//system/keymint:__subpackages__",
+    ]
+    ,
 }
